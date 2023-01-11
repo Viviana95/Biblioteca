@@ -1,12 +1,15 @@
 package com.capgemini.biblioteca.model;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -34,6 +37,9 @@ public class Libro {
 	@Column(name="nacimiento_autor")
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	private LocalDate fechNacAutor;
+	
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "libro")
+	List<Copia> copiaList;
 	
 	public Libro() {
 		super();

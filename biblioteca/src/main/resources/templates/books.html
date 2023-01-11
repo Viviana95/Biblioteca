@@ -57,6 +57,7 @@
 					<td th:text="${book.nacAutor}"></td>
 					<td th:text="${book.fechNacAutor}"></td>
 					<td>
+						<a class="btn btn-primary" th:href="@{/copies/{isbn}(isbn=${book.isbn})}">Ejemplares</a>
 						<a class="btn btn-primary" th:href="@{/update-book/{isbn}(isbn=${book.isbn})}">Actualizar</a>
 						<a class="btn btn-danger" th:href="@{/delete-book/{isbn}(isbn=${book.isbn})}">Eliminar</a>
 					</td>

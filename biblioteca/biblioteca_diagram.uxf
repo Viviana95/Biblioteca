@@ -35,8 +35,9 @@ Package::model
     <panel_attributes>Copia
 Package::model
 --
--id: Long
+-id: Long (PK)
 -estado: estadoCopia
+
 </panel_attributes>
     <additional_attributes/>
   </element>
