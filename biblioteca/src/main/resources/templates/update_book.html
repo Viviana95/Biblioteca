@@ -1,10 +1,40 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <title>Biblioteca</title>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+	rel="stylesheet">
 </head>
 <body>
+	<div class="container">
+		<h3>Gestion de Libros</h3>
+		<hr>
+		<h2>Añadir libro</h2>
+		<form action=".." method="POST" th:action="@{/save-book}"
+			th:object="${book}">
+			
+			<span>Isbn</span><input type="text"  th:field="*{isbn}" class="form-control mb-4 col-4">
+			<span>Título</span><input type="text" th:field="*{titulo}" class="form-control mb-4 col-4">
+		
+			<span>Tipo</span><select class="form-control mb-4 col-4" th:field="*{tipo}"> 
+				<option th:value="'NOVELA'" th:text="Novela"></option> 
+				<option th:value="'TEATRO'" th:text="Teatro"></option> 
+				<option th:value="'POESIA'" th:text="Poesía"></option> 
+				<option th:value="'ENSAYO'" th:text="Ensayo"></option> 
+			</select>
+			
+			<span>Editorial</span><input type="text"  th:field="*{editorial}" class="form-control mb-4 col-4">
+			<span>Año de publicación</span><input type="text"  th:field="*{anyo}" class="form-control mb-4 col-4">
+			<span>Nombre del Autor</span><input type="text"  th:field="*{nombreAutor}" class="form-control mb-4 col-4">
+			<span>Nacionalidad del Autor</span><input type="text"  th:field="*{nacAutor}" class="form-control mb-4 col-4">
+			<span>Fecha de Nacimiento del Autor</span><input type="date"  th:field="*{fechNacAutor}" class="form-control mb-4 col-4">
+			<button type="submit" class="btn btn-info col-2">Guardar libro</button>
+
+		</form>
+		<a th:href="@{/books}">Volver</a>
+	</div>
 
 </body>
 </html>

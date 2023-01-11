@@ -2,6 +2,8 @@ package com.capgemini.biblioteca.model;
 
 import java.time.LocalDate;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -30,6 +32,7 @@ public class Libro {
 	private String nacAutor;
 	
 	@Column(name="nacimiento_autor")
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	private LocalDate fechNacAutor;
 	
 	public Libro() {
