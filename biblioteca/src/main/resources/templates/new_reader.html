@@ -9,31 +9,20 @@
 </head>
 <body>
 	<div class="container">
-		<h3>Gestion de Libros</h3>
+		<h3>Gestion de Lectores</h3>
 		<hr>
-		<h2>Añadir libro</h2>
-		<form action=".." method="POST" th:action="@{/save-book}"
-			th:object="${book}">
+		<h2>Añadir lector</h2>
+		<form action=".." method="POST" th:action="@{/save-reader}"
+			th:object="${reader}">			
 			
-			<span>Isbn</span><input type="text" placeholder="introducir isbn del libro" th:field="*{isbn}" class="form-control mb-4 col-4">
-			<span>Título</span><input type="text" placeholder="introducir título del libro" th:field="*{titulo}" class="form-control mb-4 col-4">
-		
-			<span>Tipo</span><select class="form-control mb-4 col-4" th:field="*{tipo}"> 
-				<option th:value="'NOVELA'" th:text="Novela"></option> 
-				<option th:value="'TEATRO'" th:text="Teatro"></option> 
-				<option th:value="'POESIA'" th:text="Poesía"></option> 
-				<option th:value="'ENSAYO'" th:text="Ensayo"></option> 
-			</select>
+			<span>Nombre</span><input type="text" placeholder="introducir nombre del lector" th:field="*{nombre}" class="form-control mb-4 col-4">			
+			<span>Teléfono</span><input type="text" placeholder="introducir teléfono del lector" th:field="*{telefono}" class="form-control mb-4 col-4">
+			<span>Dirección</span><input type="text" placeholder="introducir la dirección del lector" th:field="*{direccion}" class="form-control mb-4 col-4">
 			
-			<span>Editorial</span><input type="text" placeholder="introducir editorial del libro" th:field="*{editorial}" class="form-control mb-4 col-4">
-			<span>Año de publicación</span><input type="text" placeholder="introducir año del libro" th:field="*{anyo}" class="form-control mb-4 col-4">
-			<span>Nombre del Autor</span><input type="text" placeholder="introducir nombre del autor" th:field="*{nombreAutor}" class="form-control mb-4 col-4">
-			<span>Nacionalidad del Autor</span><input type="text" placeholder="introducir nacionalidad del autor" th:field="*{nacAutor}" class="form-control mb-4 col-4">
-			<span>Fecha de Nacimiento del Autor</span><input type="date" placeholder="introducir nacimiento del autor" th:field="*{fechNacAutor}" class="form-control mb-4 col-4">
-			<button type="submit" class="btn btn-info col-2">Guardar libro</button>
+			<button type="submit" class="btn btn-info col-2">Guardar lector</button>
 
 		</form>
-		<a th:href="@{/books}">Volver</a>
+		<a th:href="@{/readers}">Volver</a>
 	</div>
 
 </body>
