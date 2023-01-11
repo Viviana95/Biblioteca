@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.0.0">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>50</x>
+      <y>320</y>
+      <w>280</w>
+      <h>220</h>
+    </coordinates>
+    <panel_attributes>Lector
+Package::model
+--
+- nSocio: Long (PK)
+- nombre: String
+- telefono: String
+- direccion: String
+--
++ devolver (id, fechaAct)
+{precondition: prestamos.notEmplty}
++ prestar (id, fechact)
+{precondition: multa=0}
+- multar(dias: int)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>60</x>
+      <y>50</y>
+      <w>210</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>Copia
+Package::model
+--
+-id: Long
+-estado: estadoCopia
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>330</x>
+      <y>30</y>
+      <w>210</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>Libro
+Package::model
+--
+- isbn: String
+- titulo: String
+- tipo: TipoLibro
+- editorial: String
+-anyo: int</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>260</x>
+      <y>100</y>
+      <w>90</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>70.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>580</x>
+      <y>30</y>
+      <w>210</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;enumeration&gt;&gt;
+Package::model
+TipoLibro
+--
+NOVELA
+TEATRO
+POESIA
+ENSAYO</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>10</x>
+      <y>150</y>
+      <w>120</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;enumeration&gt;&gt;
+Package::model
+TipoLibro
+--
+PRESTADO
+RETRASO
+BIBLIOTECA
+REPARACION</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>

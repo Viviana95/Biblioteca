@@ -1,9 +1,9 @@
 package com.capgemini.biblioteca.model;
 
+import java.time.LocalDate;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
@@ -15,7 +15,7 @@ public class Libro {
 	private String isbn;
 	
 	@Column
-	private Long titulo;	
+	private String titulo;	
 	@Column
 	private TipoLibro tipo;	
 	@Column
@@ -30,14 +30,14 @@ public class Libro {
 	private String nacAutor;
 	
 	@Column(name="nacimiento_autor")
-	private String fechNacAutor;
+	private LocalDate fechNacAutor;
 	
 	public Libro() {
 		super();
 	}
 
-	public Libro(String isbn, Long titulo, TipoLibro tipo, String editorial, String anyo, String nombreAutor,
-			String nacAutor, String fechNacAutor) {
+	public Libro(String isbn, String titulo, TipoLibro tipo, String editorial, String anyo, String nombreAutor,
+			String nacAutor, LocalDate fechNacAutor) {
 		super();
 		this.isbn = isbn;
 		this.titulo = titulo;
@@ -57,11 +57,11 @@ public class Libro {
 		this.isbn = isbn;
 	}
 
-	public Long getTitulo() {
+	public String getTitulo() {
 		return titulo;
 	}
 
-	public void setTitulo(Long titulo) {
+	public void setTitulo(String titulo) {
 		this.titulo = titulo;
 	}
 
@@ -105,18 +105,18 @@ public class Libro {
 		this.nacAutor = nacAutor;
 	}
 
-	public String getFechNacAutor() {
+	public LocalDate getFechNacAutor() {
 		return fechNacAutor;
 	}
 
-	public void setFechNacAutor(String fechNacAutor) {
+	public void setFechNacAutor(LocalDate fechNacAutor) {
 		this.fechNacAutor = fechNacAutor;
 	}
 
 	@Override
 	public String toString() {
 		return "Libro [isbn=" + isbn + ", titulo=" + titulo + ", tipo=" + tipo + ", editorial=" + editorial + ", anyo="
-				+ anyo + ", nombreAutor=" + nombreAutor + ", nacAutor=" + nacAutor + ", fechNacAutor=" + fechNacAutor
+				+ anyo + ", nombreAutor=" + nombreAutor + ", nacAutor=" + nacAutor + ", fechNacAutor=" + fechNacAutor.toString()
 				+ "]";
 	}
 

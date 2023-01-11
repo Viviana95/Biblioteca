@@ -22,12 +22,13 @@ public class LibroController {
 	@Autowired
 	private LibroServiceImpl libroService;
 	
-	@GetMapping("/libros")
+	@GetMapping("/books")
 	public String viewLibros(Model model) {
-		return null;
+		return findPaginated(1, "titulo", "asc", model);
 	}
-	@GetMapping("/libros/page/{pageNro}")
-	public String findPaginate(@PathVariable(value = "pageNro") int pageNro,
+	
+	@GetMapping("/books/page/{pageNro}")
+	public String findPaginated(@PathVariable(value = "pageNro") int pageNro,
 			                   @RequestParam(value = "sortField") String sortField, 
 			                   @RequestParam(value = "sortDir") String sortDirection,
 			                   Model model) {
@@ -43,29 +44,29 @@ public class LibroController {
 		model.addAttribute("reverseSortDir", sortDirection.equals("asc")? "desc" : "asc");
 		model.addAttribute("listBooks", listLibros);
 
-		return "index";
+		return "books";
 	}
 	
-	@PostMapping("/save")
-	public String saveLibro(@ModelAttribute("course") Libro libro) {
+	@PostMapping("/save-book")
+	public String saveLibro(@ModelAttribute("book") Libro libro) {
 		libroService.saveLibro(libro);
-		return "redirect:/";
+		return "redirect:/books";
 	}
-	@GetMapping("/delete/{id}")
-	public String deleteLibro(@PathVariable(value="id") String isbn) {
+	@GetMapping("/delete-book/{isbn}")
+	public String deleteLibro(@PathVariable(value="isbn") String isbn) {
 		this.libroService.deleteLibroByIsbn(isbn);
-		return "redirect:/";
+		return "redirect:/books";
 	}
 	
-	@GetMapping("/update/{id}")
+	@GetMapping("/update-book/{isbn}")
 	public String showFormForUpdate(@PathVariable(value="isbn") String isbn, Model model) {
 		Libro libro =libroService.getLibroByIsbn(isbn);
 		model.addAttribute("book",libro);
 		return "update_book";
 	}
 	
-	@GetMapping("/add")
-	public String showNewCursoForm(Model model) {
+	@GetMapping("/add-book")
+	public String showNewBookForm(Model model) {
 		Libro libro =new Libro();
 		model.addAttribute("book",libro);
 		return "new_book";
