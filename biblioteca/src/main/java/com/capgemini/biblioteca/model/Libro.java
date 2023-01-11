@@ -12,7 +12,9 @@ import jakarta.persistence.Table;
 public class Libro {
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private String isbn;
+	
+	@Column
 	private Long titulo;	
 	@Column
 	private TipoLibro tipo;	
@@ -34,9 +36,10 @@ public class Libro {
 		super();
 	}
 
-	public Libro(Long titulo, TipoLibro tipo, String editorial, String anyo, String nombreAutor, String nacAutor,
-			String fechNacAutor) {
+	public Libro(String isbn, Long titulo, TipoLibro tipo, String editorial, String anyo, String nombreAutor,
+			String nacAutor, String fechNacAutor) {
 		super();
+		this.isbn = isbn;
 		this.titulo = titulo;
 		this.tipo = tipo;
 		this.editorial = editorial;
@@ -44,6 +47,14 @@ public class Libro {
 		this.nombreAutor = nombreAutor;
 		this.nacAutor = nacAutor;
 		this.fechNacAutor = fechNacAutor;
+	}
+
+	public String getIsbn() {
+		return isbn;
+	}
+
+	public void setIsbn(String isbn) {
+		this.isbn = isbn;
 	}
 
 	public Long getTitulo() {
@@ -101,6 +112,15 @@ public class Libro {
 	public void setFechNacAutor(String fechNacAutor) {
 		this.fechNacAutor = fechNacAutor;
 	}
+
+	@Override
+	public String toString() {
+		return "Libro [isbn=" + isbn + ", titulo=" + titulo + ", tipo=" + tipo + ", editorial=" + editorial + ", anyo="
+				+ anyo + ", nombreAutor=" + nombreAutor + ", nacAutor=" + nacAutor + ", fechNacAutor=" + fechNacAutor
+				+ "]";
+	}
+
+	
 	
 
 }
