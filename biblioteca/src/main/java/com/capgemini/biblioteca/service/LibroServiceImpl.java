@@ -14,7 +14,7 @@ import com.capgemini.biblioteca.model.Libro;
 import com.capgemini.biblioteca.repository.LibroRepository;
 
 @Service
-public class LibroServiceImpl implements BiblioService{
+public class LibroServiceImpl implements LibroService{
 
 	@Autowired
 	private LibroRepository libroRepo;

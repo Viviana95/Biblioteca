@@ -16,8 +16,7 @@ public class Lector {
 	private Long nSocio;
 	
 	@Column
-	private String nombre;
-	
+	private String nombre;	
 
 	@Column
 	private String telefono;

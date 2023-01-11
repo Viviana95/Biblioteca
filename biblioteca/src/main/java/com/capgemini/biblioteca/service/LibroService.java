@@ -6,7 +6,7 @@ import org.springframework.data.domain.Page;
 
 import com.capgemini.biblioteca.model.Libro;
 
-public interface BiblioService {
+public interface LibroService {
 	List<Libro> getAllLibros();
 	Libro getLibroByIsbn(String isbn);
 	void saveLibro(Libro libro);
