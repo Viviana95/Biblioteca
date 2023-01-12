@@ -8,6 +8,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -27,6 +28,9 @@ public class Copia {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn( name="isbn")
 	private Libro libro;
+	
+	@OneToOne (mappedBy = "copia")
+	private Prestamo prestamo;
 	
 	public Long getId() {
 		return id;

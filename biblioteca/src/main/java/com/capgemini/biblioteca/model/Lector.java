@@ -1,10 +1,14 @@
 package com.capgemini.biblioteca.model;
 
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -23,6 +27,9 @@ public class Lector {
 	
 	@Column
 	private String direccion;
+	
+	@OneToMany(mappedBy = "lector")
+	private List<Prestamo> prestamos;
 	
 	public Lector() {
 		super();
