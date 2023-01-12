@@ -1,6 +1,7 @@
 package com.capgemini.biblioteca.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -10,6 +11,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.capgemini.biblioteca.model.Copia;
+import com.capgemini.biblioteca.model.Lector;
 import com.capgemini.biblioteca.repository.CopiaRepository;
 import com.capgemini.biblioteca.repository.CopiaRepositoryImpl;
 
@@ -33,6 +35,15 @@ public class CopiaServiceImpl implements CopiaService {
 		if (copias.isEmpty()) 
 			throw new RuntimeException("no se encuentran copias del isbn: " + isbn);
 		return copias;
+	}
+	
+	public Copia getCopiaById(Long id) {
+		Optional<Copia> optionalCopia = this.jpaRepo.findById(id);
+		Copia copia=null;
+		if(optionalCopia.isPresent()) {
+			copia = optionalCopia.get() ;
+		}else {throw new RuntimeException("no se encuentra el lector con el Número de Socio: " + id);	}
+		return copia;
 	}
 
 	@Override
