@@ -48,6 +48,12 @@ public class CopiaController {
 		return "redirect:/copies/{isbn}";
 	}
 	
+	@GetMapping("/copies/delete-copy/{id}")
+	public String deleteLector(@PathVariable(value="id")Long id) {
+		this.copiaService.deleteCopiaById(id);
+		return "redirect:/books";
+	}
+	
 //	@GetMapping("/copies/{isbn}/page/{pageNro}")
 //	public String findPaginated(@PathVariable (value = "isbn")String isbn,
 //								@PathVariable(value = "pageNro") int pageNro,

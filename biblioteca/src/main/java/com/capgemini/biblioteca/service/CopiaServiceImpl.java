@@ -42,7 +42,7 @@ public class CopiaServiceImpl implements CopiaService {
 
 	@Override
 	public void deleteCopiaById(long id) {
-		this.deleteCopiaById(id);
+		this.jpaRepo.deleteById(id);
 
 	}
 
