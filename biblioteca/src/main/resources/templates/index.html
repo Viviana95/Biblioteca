@@ -8,11 +8,8 @@
 	rel="stylesheet">
 </head>
 <body>
-	<div class="container">
-		<h3>Inicio</h3>
-		<hr>
-		<a class="btn btn-primary" th:href="@{/books}">		Gestión de libros</a>
-		<a class="btn btn-primary" th:href="@{/readers}">	Gestión de Lectores</a>
+	<div class="container">	
+	<div th:replace="template::navbar" ></div>
 		
 	</div>
 </body>
