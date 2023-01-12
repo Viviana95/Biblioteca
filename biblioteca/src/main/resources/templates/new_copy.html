@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Biblioteca</title>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+	rel="stylesheet">
+</head>
+<body>
+	<div class="container">
+		<h3>Gestion de Copias</h3>
+		<hr>
+		<h2>Añadir copia</h2>
+		<form action=".." method="POST" th:action="@{'/copies/save-copy/' + ${isbn}}"
+			th:object="${copy}" >
+			<input type="hidden" th:field="*{libro.isbn}">		
+			<span>Estado</span><select class="form-control mb-4 col-4" th:field="*{estado}"> 
+				<option th:value="'PRESTADO'" th:text="Prestado"></option> 
+				<option th:value="'RETRASO'" th:text="Retraso"></option> 
+				<option th:value="'BIBLIOTECA'" th:text="Biblioteca"></option> 
+				<option th:value="'REPARACION'" th:text="Reparación"></option> 
+			</select>
+			<button type="submit" class="btn btn-info col-2">Guardar copia</button>
+
+		</form>
+		<a th:href="@{/books}">Volver</a>
+	</div>
+
+</body>
+</html>

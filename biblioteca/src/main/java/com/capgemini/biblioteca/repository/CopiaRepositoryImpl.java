@@ -31,8 +31,7 @@ public class CopiaRepositoryImpl {
 					+ "where isbn = '" + isbn + "';");
 	
 			while(rs.next()) {
-				copias.add(new Copia(rs.getLong("id"), 
-						rs.getInt("estado")));
+				copias.add(new Copia(rs.getLong("id"), rs.getInt("estado")));
 			}
 			sql.close();
 			con.close();

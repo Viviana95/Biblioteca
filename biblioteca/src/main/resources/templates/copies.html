@@ -8,7 +8,7 @@
 <body>
 	<h3>Copias del libro </h3>
 	<h3 th:text ="${isbn}"></h3>
-	<a class="btn btn-primary btn-sm mb-3" th:href="@{/add-copy}" >Agregar Lector</a>
+	<a class="btn btn-primary btn-sm mb-3" th:href="@{'/copies/add-copy/' + ${isbn}}" >Agregar Copia</a>
 	
 	<div class = "container">
 		<table class="table table-striped table-hover table-responsive-md">
@@ -28,12 +28,10 @@
 				<tr th:each="copy: ${listCopies}">
 					<td th:text="${copy.id}"></td>
 					<td th:text="${copy.estado}"></td>
-					
-					<!-- 
 					<td>
-						<a class="btn btn-primary" th:href="@{/update-copy/{nSocio}(nSocio=${reader.nSocio})}">Actualizar</a>
-						<a class="btn btn-danger" th:href="@{/delete-reader/{nSocio}(nSocio=${reader.nSocio})}">Eliminar</a>
-					</td> -->
+						<a class="btn btn-primary" th:href="@{/update-copy/{id}(id=${copy.id})}">Actualizar</a>
+						<a class="btn btn-danger" th:href="@{/delete-copy/{id}(id=${copy.id})}">Eliminar</a>
+					</td>
 				</tr>
 			</tbody>
 		</table>
