@@ -40,7 +40,7 @@ public class CopiaController {
 		model.addAttribute("sortDir", sortDirection);
 		model.addAttribute("reverseSortDir", sortDirection.equals("asc")? "desc" : "asc");
 		model.addAttribute("listCopies", listCopias);
-
+		//model.addAttribute(isbn);
 		return "copies";
 	}
 }

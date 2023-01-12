@@ -9,7 +9,7 @@ import com.capgemini.biblioteca.model.Copia;
 
 public interface CopiaService {
 	List<Copia> getAllCopias();
-	Copia getCopiasByIsbn(long nSocio);
+	Copia getCopiasByIsbn(String isbn);
 	void saveCopia(Copia copia);
 	void deleteCopiaById(long id);
 	

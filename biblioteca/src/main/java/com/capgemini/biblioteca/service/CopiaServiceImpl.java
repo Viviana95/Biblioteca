@@ -1,6 +1,7 @@
 package com.capgemini.biblioteca.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -24,20 +25,24 @@ public class CopiaServiceImpl implements CopiaService {
 	}
 
 	@Override
-	public Copia getCopiasByIsbn(long nSocio) {
-		// TODO Auto-generated method stub
-		return null;
+	public Copia getCopiasByIsbn(String isbn) {
+		Optional<Copia> optionalCopia = this.copiaRepo.findById(Long.parseLong(isbn));
+		Copia copia = null;
+		if (optionalCopia.isPresent()) {
+			copia = optionalCopia.get();
+		} else
+			throw new RuntimeException("no se encuentra el libro con el isbn: " + isbn);
+		return copia;
 	}
 
 	@Override
 	public void saveCopia(Copia copia) {
-		// TODO Auto-generated method stub
-
+		this.copiaRepo.save(copia);
 	}
 
 	@Override
 	public void deleteCopiaById(long id) {
-		// TODO Auto-generated method stub
+		this.deleteCopiaById(id);
 
 	}
 
@@ -47,6 +52,7 @@ public class CopiaServiceImpl implements CopiaService {
 				Sort.by(sortField).ascending() :
 					Sort.by(sortField).descending();
 		Pageable pageable = PageRequest.of(pageNum -1, pageSize, sort);
+		copiaRepo.findBy(null, null).
 		return this.copiaRepo.findAll(pageable);
 	}
 
