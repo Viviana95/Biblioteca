@@ -17,7 +17,7 @@ import jakarta.persistence.Table;
 public class Prestamo {
 	@Id()
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Long id_prestamo;
+	private Long id;
 	
 	@Column
 	private LocalDate inicio;
@@ -38,21 +38,23 @@ public class Prestamo {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Prestamo(Long id_prestamo, LocalDate inicio, LocalDate fin, Copia copia, Lector lector) {
+	public Prestamo(Long id, LocalDate inicio, LocalDate fin, Copia copia, Lector lector) {
 		super();
-		this.id_prestamo = id_prestamo;
+		this.id = id;
 		this.inicio = inicio;
 		this.fin = fin;
 		this.copia = copia;
 		this.lector = lector;
 	}
 
-	public Long getId_prestamo() {
-		return id_prestamo;
+	
+
+	public Long getId() {
+		return id;
 	}
 
-	public void setId_prestamo(Long id_prestamo) {
-		this.id_prestamo = id_prestamo;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public LocalDate getInicio() {
