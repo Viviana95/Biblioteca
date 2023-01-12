@@ -1,5 +1,17 @@
 use biblioteca;
 select * from libros;
+#----------------------------------Lectores---------------------------------------
+INSERT INTO lectores (nombre, telefono, direccion) 
+VALUES ('Paco Fernández', '987987987','Oviedo' );
+INSERT INTO lectores (nombre, telefono, direccion) 
+VALUES ('Sara Pérez', '876554332','Avilés' );
+INSERT INTO lectores (nombre, telefono, direccion) 
+VALUES ('Lola Miguelañez', '467467895','Gijón' );
+INSERT INTO lectores (nombre, telefono, direccion) 
+VALUES ('Raúl Arias', '675987358','La Felguera' );
+INSERT INTO lectores (nombre, telefono, direccion) 
+VALUES ('Eustaquio ', '888888888','Gijón' );
+select * from lectores;
 #---------------------------------Libros----------------------------------------------------------------
 INSERT INTO libros (isbn, anyo, editorial, nacimiento_autor, nacionalidad_autor, nombre_autor, tipo, titulo) 
 VALUES ('123456', '1990', 'Lumen' , '1970-12-3', 'Española', 'Raúl Gómez', 1, 'Las rosas de invierno');

@@ -24,7 +24,7 @@ public class CopiaController {
 	
 	
 	@GetMapping("/copies/{isbn}")
-	public String viewCopias(@PathVariable (value = "isbn")String isbn, Model model) {
+	public String viewCopies(@PathVariable (value = "isbn")String isbn, Model model) {
 		List<Copia> listCopias = copiaService.getCopiasByIsbn(isbn);
 		model.addAttribute("listCopies", listCopias);
 		return "copies";

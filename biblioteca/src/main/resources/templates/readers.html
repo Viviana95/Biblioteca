@@ -43,7 +43,10 @@
 						<td th:text="${reader.telefono}"></td>
 						<td th:text="${reader.direccion}"></td>
 
-						<td><a class="btn btn-primary"
+						<td>
+							<a class="btn btn-primary"
+							th:href="@{/loans/{nSocio}(nSocio=${reader.nSocio})}">Préstamos</a>
+							<a class="btn btn-primary"
 							th:href="@{/update-reader/{nSocio}(nSocio=${reader.nSocio})}">Actualizar</a>
 							<a class="btn btn-danger"
 							th:href="@{/delete-reader/{nSocio}(nSocio=${reader.nSocio})}">Eliminar</a>
