@@ -53,6 +53,12 @@ public class Copia {
 		this.id = id;
 		this.estado = estado;
 	}
+
+	public Copia(long id, int estado) {
+		super();
+		this.id = id;
+		this.estado = EstadoCopia.parseInt(estado);
+	}
 	
 	
 }

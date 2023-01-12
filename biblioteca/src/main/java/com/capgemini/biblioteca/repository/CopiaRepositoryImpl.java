@@ -7,45 +7,39 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
-import java.util.function.Function;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
-import org.springframework.data.repository.query.FluentQuery.FetchableFluentQuery;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import com.capgemini.biblioteca.model.Copia;
 
+@Repository
 public class CopiaRepositoryImpl {
-	@Autowired
-	private CopiaRepository jpaRepo;
 	
-	List<Copia> copias = new ArrayList<Copia>();
-	
-	try {
-		Class.forName("com.mysql.cj.jdbc.Driver");
-		Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/juegos", "root", "admin");
-		Statement sql = con.createStatement();
+	public List<Copia> getCopiasByIsbn(String isbn) {
+		List<Copia> copias = new ArrayList<Copia>();
 		
-		ResultSet rs = sql.executeQuery("select * from copias\r\n"
-				+ "where nombre_jugador = '" + jugador + "';");
-
-//		while(rs.next()) {
-//			copias.add(new Copia(rs.getInt("id_partida"), 
-//					rs.getString("nombre_jugador"), 
-//					rs.getInt("eleccion_jugador"), 
-//					rs.getInt("eleccion_ordernador"), 
-//					rs.getDate("fecha_hora")));
-//		}
-		sql.close();
-		con.close();
-	} catch (ClassNotFoundException | SQLException e) {
-		e.printStackTrace();
-	}
-	return copias;
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/biblioteca", "root", "admin");
+			Statement sql = con.createStatement();
+			
+			ResultSet rs = sql.executeQuery("select * from copias\r\n"
+					+ "where isbn = '" + isbn + "';");
 	
+			while(rs.next()) {
+				copias.add(new Copia(rs.getLong("id"), 
+						rs.getInt("estado")));
+			}
+			sql.close();
+			con.close();
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		}
+		return copias;
+	}
 }
 

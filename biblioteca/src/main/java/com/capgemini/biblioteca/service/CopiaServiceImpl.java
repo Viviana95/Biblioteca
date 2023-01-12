@@ -1,7 +1,6 @@
 package com.capgemini.biblioteca.service;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -12,32 +11,33 @@ import org.springframework.stereotype.Service;
 
 import com.capgemini.biblioteca.model.Copia;
 import com.capgemini.biblioteca.repository.CopiaRepository;
+import com.capgemini.biblioteca.repository.CopiaRepositoryImpl;
 
 @Service
 public class CopiaServiceImpl implements CopiaService {
 	
 	@Autowired
-	private CopiaRepository copiaRepo;
+	private CopiaRepositoryImpl copiaRepo;
+	
+	@Autowired
+	private CopiaRepository jpaRepo;
 	
 	@Override
 	public List<Copia> getAllCopias() {
-		return this.copiaRepo.findAll();
+		return this.jpaRepo.findAll();
 	}
 
 	@Override
-	public Copia getCopiasByIsbn(String isbn) {
-		Optional<Copia> optionalCopia = this.copiaRepo.findById(Long.parseLong(isbn));
-		Copia copia = null;
-		if (optionalCopia.isPresent()) {
-			copia = optionalCopia.get();
-		} else
-			throw new RuntimeException("no se encuentra el libro con el isbn: " + isbn);
-		return copia;
+	public List<Copia> getCopiasByIsbn(String isbn) {
+		List<Copia> copias = copiaRepo.getCopiasByIsbn(isbn);
+		if (copias.isEmpty()) 
+			throw new RuntimeException("no se encuentran copias del isbn: " + isbn);
+		return copias;
 	}
 
 	@Override
 	public void saveCopia(Copia copia) {
-		this.copiaRepo.save(copia);
+		this.jpaRepo.save(copia);
 	}
 
 	@Override
@@ -52,8 +52,7 @@ public class CopiaServiceImpl implements CopiaService {
 				Sort.by(sortField).ascending() :
 					Sort.by(sortField).descending();
 		Pageable pageable = PageRequest.of(pageNum -1, pageSize, sort);
-		copiaRepo.findBy(null, null).
-		return this.copiaRepo.findAll(pageable);
+		return this.jpaRepo.findAll(pageable);
 	}
 
 }
