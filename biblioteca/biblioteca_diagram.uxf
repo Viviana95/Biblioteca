@@ -47,7 +47,7 @@ Package::model
       <x>410</x>
       <y>30</y>
       <w>210</w>
-      <h>130</h>
+      <h>190</h>
     </coordinates>
     <panel_attributes>Libro
 Package::model
@@ -56,7 +56,10 @@ Package::model
 - titulo: String
 - tipo: TipoLibro
 - editorial: String
--anyo: int</panel_attributes>
+-anyo: int
+- nombreAutor: String
+- nacAutor: String
+- fechNacAutor: LocalDate</panel_attributes>
     <additional_attributes/>
   </element>
   <element>

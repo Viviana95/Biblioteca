@@ -46,8 +46,8 @@ public class PrestamoController {
 		model.addAttribute("listReaders",listLectores);
 		return "loans/new_loan";
 	}
-	@PostMapping("/loans/save-loan/{nSocio}")
-	public String saveLoan(@PathVariable (value = "nSocio")Long nSocio,@ModelAttribute("loan") Prestamo prestamo) {
+	@PostMapping("/loans/save-loan/")
+	public String saveLoan(@ModelAttribute("loan") Prestamo prestamo) {
 		prestamoService.savePrestamo(prestamo);
 		return "redirect:/copies/{nSocio}";
 	}
