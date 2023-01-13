@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.capgemini.biblioteca.model.Copia;
+import com.capgemini.biblioteca.model.Lector;
 import com.capgemini.biblioteca.model.Libro;
 import com.capgemini.biblioteca.model.Prestamo;
 import com.capgemini.biblioteca.service.CopiaServiceImpl;
@@ -25,20 +26,25 @@ public class PrestamoController {
 	@Autowired
 	private LectorServiceImpl lectorService;
 	
+	@Autowired
+	private CopiaServiceImpl copiaService;
+	
 	
 	@GetMapping("/loans/{nSocio}")
 	public String viewLoans(@PathVariable (value = "nSocio")Long nSocio, Model model) {
 		List<Prestamo> listPrestamos = prestamoService.getPrestamoBySocio(nSocio);
 		model.addAttribute("listLoans", listPrestamos);
-		return "loans";
+		return "loans/loans";
 	}
 	
-	@GetMapping("/loans/add-loan/{nSocio}")
-	public String showNewLoanForm(@PathVariable (value = "nSocio")Long nSocio,Model model) {
+	@GetMapping("/loans/add-loan/{id}")
+	public String showNewLoanForm(@PathVariable (value = "id")Long id,Model model) {
 		Prestamo prestamo =new Prestamo();
-		prestamo.setLector(lectorService.getLectorByNSocio(nSocio));
+		prestamo.setCopia(copiaService.getCopiaById(id));
+		List<Lector> listLectores = lectorService.getAllLectores();
 		model.addAttribute("loan",prestamo);
-		return "new_loan";
+		model.addAttribute("listReaders",listLectores);
+		return "loans/new_loan";
 	}
 	@PostMapping("/loans/save-loan/{nSocio}")
 	public String saveLoan(@PathVariable (value = "nSocio")Long nSocio,@ModelAttribute("loan") Prestamo prestamo) {
