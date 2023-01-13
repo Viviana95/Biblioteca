@@ -1,5 +1,6 @@
 package com.capgemini.biblioteca.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -23,13 +24,13 @@ public class PrestamoServiceImpl implements PrestamoService{
 	@Override
 	public List<Prestamo> getPrestamoBySocio(Long nSocio) {
 		List<Prestamo> prestamos = prestamoRepo.findAll();
+		List<Prestamo> prestamosSocio = new ArrayList<>();
 		for (Prestamo prestamo : prestamos) {
-			if(prestamo.getLector().getnSocio( )!= nSocio){
-				prestamos.remove(prestamo);
+			if(prestamo.getLector().getnSocio( )== nSocio){
+				prestamosSocio.add(prestamo);
 			}
 		}
-		
-		return prestamos;
+		return prestamosSocio;
 	}
 	
 	public Prestamo getPrestamoById(Long id) {

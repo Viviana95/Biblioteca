@@ -33,6 +33,7 @@ INSERT INTO libros (isbn, anyo, editorial, nacimiento_autor, nacionalidad_autor,
 VALUES ('8352392', '1965', 'SM' , '1953-07-21', 'Italiana', 'Carolina Lanotte', '2', 'Il bel canto');
 INSERT INTO libros (isbn, anyo, editorial, nacimiento_autor, nacionalidad_autor, nombre_autor, tipo, titulo) 
 VALUES ('27383947', '1995', 'Anaya' , '1782-03-01', 'Portuguesa', 'Isaura Coelho', '3', 'Bom dia, amor');
+select * from libros;
 #-------------------------------------------Copias----------------------------------------------------------
 INSERT INTO copias (estado, isbn) 
 VALUES (0, '123456' );
@@ -49,3 +50,17 @@ VALUES (1, '48420384' );
 INSERT INTO copias (estado, isbn) 
 VALUES (1, '48420384' );
 select * from copias;
+#----------------------------------Prestamos---------------------------------------
+INSERT INTO prestamos (inicio, fin, id_copia, n_socio) 
+VALUES ('2023-01-01', '2023-01-30', 1, 1);
+INSERT INTO prestamos (inicio, fin, id_copia, n_socio) 
+VALUES ('2023-01-01', '2023-01-30', 2, 1);
+INSERT INTO prestamos (inicio, fin, id_copia, n_socio) 
+VALUES ('2023-01-01', '2023-01-30', 3, 1);
+INSERT INTO prestamos (inicio, fin, id_copia, n_socio) 
+VALUES ('2023-01-01', '2023-01-30', 4, 2);
+INSERT INTO prestamos (inicio, fin, id_copia, n_socio) 
+VALUES ('2023-01-01', '2023-01-30', 5, 3);
+INSERT INTO prestamos (inicio, fin, id_copia, n_socio) 
+VALUES ('2023-01-01', '2023-01-30', 6, 4);
+select * from prestamos;
