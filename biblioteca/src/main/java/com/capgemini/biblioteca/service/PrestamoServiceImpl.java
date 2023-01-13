@@ -38,7 +38,8 @@ public class PrestamoServiceImpl implements PrestamoService{
 		Prestamo prestamo=null;
 		if(optionalPrestamo.isPresent()) {
 			prestamo = optionalPrestamo.get() ;
-		}else {throw new RuntimeException("no se encuentra el lector con el Número de Socio: " + id);	}
+		}
+//		else {throw new RuntimeException("no se encuentra el lector con el Número de Socio: " + id);	}
 		return prestamo;
 	}
 	

@@ -32,8 +32,8 @@ public class CopiaServiceImpl implements CopiaService {
 	@Override
 	public List<Copia> getCopiasByIsbn(String isbn) {
 		List<Copia> copias = copiaRepo.getCopiasByIsbn(isbn);
-		if (copias.isEmpty()) 
-			throw new RuntimeException("no se encuentran copias del isbn: " + isbn);
+//		if (copias.isEmpty()) 
+//			throw new RuntimeException("no se encuentran copias del isbn: " + isbn);
 		return copias;
 	}
 	
