@@ -6,10 +6,26 @@
 </head>
 <body>
 	<div th:fragment="navbar">
-		<h3>Biblioteca</h3>
-		<a class="btn btn-primary" th:href="@{/books}"> Gestión de libros</a>
-		<a class="btn btn-primary" th:href="@{/readers}"> Gestión de
-			Lectores</a>
+		<nav class="navbar navbar-expand-lg bg-success bg-opacity-50">
+			<div class="container-fluid">
+				<a class="navbar-brand" href="#"><h1>
+					Biblioteca
+				</h1></a>
+				<button class="navbar-toggler" type="button"
+					data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+					aria-controls="navbarNavAltMarkup" aria-expanded="false"
+					aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+					<div class="navbar-nav">
+						<a class="nav-link link-light ms-3 text-black"
+							aria-current="page" th:href="@{/books}"> Gestión de libros</a> 
+						<a class="nav-link link-light ms-3 text-black" th:href="@{/readers}">Gestión de lectores</a>
+					</div>
+				</div>
+			</div>
+		</nav>
 	</div>
 </body>
 </html>

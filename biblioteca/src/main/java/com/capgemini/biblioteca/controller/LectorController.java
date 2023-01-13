@@ -43,7 +43,7 @@ public class LectorController {
 		model.addAttribute("reverseSortDir", sortDirection.equals("asc")? "desc" : "asc");
 		model.addAttribute("listBooks", listLectores);
 
-		return "readers";
+		return "readers/readers";
 	}
 	
 	@PostMapping("/save-reader")
@@ -61,14 +61,14 @@ public class LectorController {
 	public String showFormForUpdate(@PathVariable(value="nSocio") Long nSocio, Model model) {
 		Lector lector =lectorService.getLectorByNSocio(nSocio);
 		model.addAttribute("reader",lector);
-		return "update_reader";
+		return "readers/update_reader";
 	}
 	
 	@GetMapping("/add-reader")
 	public String showNewBookForm(Model model) {
 		Lector lector =new Lector();
 		model.addAttribute("reader",lector);
-		return "new_reader";
+		return "readers/new_reader";
 	}
 
 }

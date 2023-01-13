@@ -27,7 +27,7 @@ public class CopiaController {
 	public String viewCopies(@PathVariable (value = "isbn")String isbn, Model model) {
 		List<Copia> listCopias = copiaService.getCopiasByIsbn(isbn);
 		model.addAttribute("listCopies", listCopias);
-		return "copies";
+		return "copies/copies";
 	}
 	
 	@GetMapping("/copies/add-copy/{isbn}")
@@ -35,7 +35,7 @@ public class CopiaController {
 		Copia copia =new Copia();
 		copia.setLibro(libroService.getLibroByIsbn(isbn));
 		model.addAttribute("copy",copia);
-		return "new_copy";
+		return "copies/new_copy";
 	}
 	@PostMapping("/copies/save-copy/{isbn}")
 	public String saveCopia(@PathVariable (value = "isbn")String isbn,@ModelAttribute("copy") Copia copia) {
@@ -53,7 +53,7 @@ public class CopiaController {
 	public String showFormForUpdate(@PathVariable(value="id") Long id, Model model) {
 		Copia copia = copiaService.getCopiaById(id);
 		model.addAttribute("copy",copia);
-		return "update_copy";
+		return "copies/update_copy";
 	}
 	
 	@PostMapping("/copies/update-copy/{id}")

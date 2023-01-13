@@ -44,7 +44,7 @@ public class LibroController {
 		model.addAttribute("reverseSortDir", sortDirection.equals("asc")? "desc" : "asc");
 		model.addAttribute("listBooks", listLibros);
 
-		return "books";
+		return "books/books";
 	}
 	
 	@PostMapping("/save-book")
@@ -62,14 +62,14 @@ public class LibroController {
 	public String showFormForUpdate(@PathVariable(value="isbn") String isbn, Model model) {
 		Libro libro =libroService.getLibroByIsbn(isbn);
 		model.addAttribute("book",libro);
-		return "update_book";
+		return "books/update_book";
 	}
 	
 	@GetMapping("/add-book")
 	public String showNewBookForm(Model model) {
 		Libro libro =new Libro();
 		model.addAttribute("book",libro);
-		return "new_book";
+		return "books/new_book";
 	}
 
 }
